@@ -2,6 +2,8 @@
 
 > **Launch server, open the page, connect, add games into list and vote for them.**
 
+**[🇬🇧 English version / Read in English](./README.en.md)**
+
 Вебсервіс для компанії, що допомагає швидко та справедливо обрати спільну гру. Клієнтська частина повністю статична й працює на **GitHub Pages**, а бекенд на **Python (FastAPI)** керує сесіями та в реальному часі підраховує результати голосування.
 
 ---
