@@ -65,6 +65,20 @@ def generate_room_code() -> str:
     digits = "".join(random.choices(string.digits, k=2))
     return f"{letters}{digits}"
 
+# Розумні ваги для голосування:
+# 1 голос -2 має вагу -4 бали, що врівноважує 2 голоси +2 (+2 і +2 = +4)
+# 1 голос -1 має вагу -2 бали
+# 0 залишається 0
+# +1 додає 1 бал
+# +2 додає 2 бали
+SMART_WEIGHTS = {
+    -2: -4,
+    -1: -2,
+     0:  0,
+     1:  1,
+     2:  2
+}
+
 def normalize_rating(val: int) -> Optional[int]:
     """Normalizes rating to -2, -1, 0, +1, +2 scale."""
     if -2 <= val <= 2:
@@ -100,34 +114,33 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
                     pass
         
         vote_count = len(ratings)
-        total_score = sum(ratings)
-        avg_score = round(total_score / vote_count, 2) if vote_count > 0 else 0.0
-        formatted_avg = f"+{avg_score}" if avg_score > 0 else str(avg_score)
-        formatted_total = f"+{total_score}" if total_score > 0 else str(total_score)
+        # Розумний сумарний бал (без середнього арифметичного):
+        score = sum(SMART_WEIGHTS.get(r, r) for r in ratings)
+        formatted_score = f"+{score}" if score > 0 else str(score)
         
         leaderboard.append({
             "id": gid,
             "title": game["title"],
             "added_by": game.get("added_by", "Невідомо"),
             "vote_count": vote_count,
-            "total_score": total_score,
-            "avg_score": avg_score,
-            "formatted_avg": formatted_avg,
-            "formatted_total": formatted_total,
+            "score": score,
+            "total_score": score,
+            "formatted_score": formatted_score,
+            "formatted_total": formatted_score,
             "breakdown": breakdown,
             "is_winner": False
         })
     
-    # Sort leaderboard: highest avg_score first, then total_score, then vote_count
-    leaderboard.sort(key=lambda x: (x["avg_score"], x["total_score"], x["vote_count"]), reverse=True)
+    # Сортування таблиці: найбільший розумний бал спочатку, потім кількість голосів
+    leaderboard.sort(key=lambda x: (x["score"], x["vote_count"]), reverse=True)
     
-    # Determine winners (top average score)
+    # Визначення переможця / переможців за розумним балом
     winners = []
     if leaderboard and leaderboard[0]["vote_count"] > 0:
-        top_avg = leaderboard[0]["avg_score"]
-        # In case of tie, all games with equal highest avg_score are winners
+        top_score = leaderboard[0]["score"]
+        # Якщо однакова найвища оцінка — показуємо всіх переможців (нічия)
         for item in leaderboard:
-            if item["avg_score"] == top_avg:
+            if item["score"] == top_score:
                 item["is_winner"] = True
                 winners.append(item)
             else:

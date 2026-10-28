@@ -93,12 +93,11 @@
       results_title: '🏆 Результати вибору',
       results_no_votes_title: 'Немає голосів',
       results_no_votes_desc: 'Жодної оцінки не було отримано під час цієї сесії.',
-      tie_banner: '🎉 НІЧИЯ! Одразу кілька ігор набрали однаково найвищий бал ({0})! Всі вони є переможцями:',
+      tie_banner: '🎉 НІЧИЯ! Одразу кілька ігор набрали однаково найвищий результат ({0} балів)! Всі вони є переможцями:',
       winner_badge_single: 'Найбільш обраний варіант',
       winner_badge_tie: 'Переможець #{0} (Нічия)',
-      stat_avg_score: 'Середній бал:',
+      stat_score: 'Підсумковий бал:',
       stat_votes: 'Голосів:',
-      stat_total_score: 'Сума балів:',
       leaderboard_title: '📊 Повна таблиця результатів',
       total_voters_text: 'Всього голосувало гравців: {0}',
       added_by_prefix: 'Додав(ла): ',
@@ -207,12 +206,11 @@
       results_title: '🏆 Voting Results',
       results_no_votes_title: 'No Votes',
       results_no_votes_desc: 'No ratings were submitted during this session.',
-      tie_banner: '🎉 TIE! Multiple games received the highest rating ({0})! They are all winners:',
+      tie_banner: '🎉 TIE! Multiple games received the highest result ({0} pts)! They are all winners:',
       winner_badge_single: 'Most Picked Option',
       winner_badge_tie: 'Winner #{0} (Tie)',
-      stat_avg_score: 'Average score:',
+      stat_score: 'Final score:',
       stat_votes: 'Votes:',
-      stat_total_score: 'Total points:',
       leaderboard_title: '📊 Full Leaderboard',
       total_voters_text: 'Total players voted: {0}',
       added_by_prefix: 'Added by: ',
@@ -1068,23 +1066,24 @@
     } else {
       let tieNoticeHtml = '';
       if (isTie) {
+        const topScoreFormatted = winners[0].formatted_score || formatScoreSign(winners[0].score || winners[0].total_score);
         tieNoticeHtml = `
           <div class="tie-banner">
-            ${t('tie_banner', winners[0].formatted_avg || formatScoreSign(winners[0].avg_score))}
+            ${t('tie_banner', topScoreFormatted)}
           </div>
         `;
       }
 
       const winnerCardsHtml = winners.map((w, idx) => {
+        const scoreStr = w.formatted_score || formatScoreSign(w.score || w.total_score);
         return `
           <div class="winner-card">
             <div class="winner-trophy">${isTie ? '🎉' : '🏆'}</div>
             <div class="winner-badge">${isTie ? t('winner_badge_tie', idx + 1) : t('winner_badge_single')}</div>
             <div class="winner-title">${escapeHtml(w.title)}</div>
             <div class="winner-stats">
-              <div>${t('stat_avg_score')} <span class="winner-score-highlight">${w.formatted_avg || formatScoreSign(w.avg_score)}</span></div>
+              <div>${t('stat_score')} <span class="winner-score-highlight">${scoreStr} ${t('pts_suffix')}</span></div>
               <div>${t('stat_votes')} <strong>${w.vote_count}</strong></div>
-              <div>${t('stat_total_score')} <strong>${w.formatted_total || formatScoreSign(w.total_score)}</strong></div>
             </div>
           </div>
         `;
@@ -1101,6 +1100,7 @@
       else if (index === 1) medal = '🥈';
       else if (index === 2) medal = '🥉';
 
+      const scoreStr = item.formatted_score || formatScoreSign(item.score || item.total_score);
       return `
         <div class="leaderboard-item ${item.is_winner ? 'is-winner' : ''}">
           <div class="leaderboard-rank">${medal}</div>
@@ -1109,8 +1109,7 @@
             <div class="leaderboard-game-meta">${t('added_by_prefix')}${escapeHtml(item.added_by)} &bull; ${item.vote_count} ${t('voted_players_suffix')}</div>
           </div>
           <div class="leaderboard-score-box">
-            <span class="score-badge">${item.formatted_avg || formatScoreSign(item.avg_score)}</span>
-            <span class="small-text text-muted">(${item.formatted_total || formatScoreSign(item.total_score)} ${t('pts_suffix')})</span>
+            <span class="score-badge">${scoreStr} ${t('pts_suffix')}</span>
           </div>
         </div>
       `;

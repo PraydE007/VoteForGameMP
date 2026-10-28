@@ -14,8 +14,8 @@ A simple, fast, and real-time multiplayer polling web application designed to he
 - 🌐 **GitHub Pages Native:** Pure HTML5, modern CSS3, and vanilla JS — zero build step, no npm/bundler dependencies.
 - 🔗 **One-Click Shareable Links:** Copy direct invite links that pre-fill both server address and room code for your friends.
 - 🎮 **Flexible Game Addition:** Add games individually or paste multiple titles in bulk.
-- ⭐ **-2 to +2 Rating Scale:** Every participant rates each game from -2 to +2 points (-2 = don't want, -1 = not really, 0 = neutral, +1 = would play, +2 = must play!).
-- 🏆 **Auto-Reveal & Tie Detection:** As soon as all participants submit their ratings, results are revealed immediately. If multiple games share the highest average rating, **all tied winners are highlighted**.
+- ⭐ **Smart Voting (-2..+2):** Every participant rates each game from -2 to +2. A strong objection (**-2: don't want**) carries double negative weight (-4 pts) to counter-balance two players voting **+2**. Arithmetic mean has been removed in favor of total consensus points.
+- 🏆 **Auto-Reveal & Tie Detection:** As soon as all participants submit their ratings, results are revealed immediately. If multiple games share the highest score, **all tied winners are highlighted**.
 
 ---
 
