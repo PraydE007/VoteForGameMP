@@ -1159,6 +1159,124 @@ body {
   to { opacity: 1; transform: translateX(0); }
 }
 
+/* Google search button during voting */
+.btn-google-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: #93c5fd;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.btn-google-search:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Game search & duplicate feedback in lobby */
+.game-search-feedback {
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.82rem;
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.75rem;
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.game-search-feedback.duplicate {
+  display: flex;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+.game-search-feedback.partial {
+  display: flex;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fcd34d;
+}
+
+.game-item.highlighted {
+  border-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.12) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+/* Share Session Box in Server Drawer */
+.share-session-box {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.share-session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.share-session-header h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #a5b4fc;
+}
+
+.select-all {
+  user-select: all;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #38bdf8;
+}
+
+/* File Import styling */
+.import-file-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #a5b4fc;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px dashed rgba(99, 102, 241, 0.3);
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.import-file-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.import-file-input {
+  display: none;
+}
+
+.import-preview-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
 /* Footer */
 .app-footer {
   text-align: center;

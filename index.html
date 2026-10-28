@@ -59,6 +59,23 @@
         <code>ngrok http 8000</code> або <code>cloudflared tunnel --url http://localhost:8000</code>
         <p data-i18n="server_hint_p2">і вставте отримане <code>https://...</code> посилання вище.</p>
       </div>
+
+      <!-- Share Session Link Box -->
+      <div class="share-session-box" id="shareSessionBox">
+        <div class="share-session-header">
+          <h4 data-i18n="share_session_title">🔗 Поділитися сесією з друзями</h4>
+          <span class="badge badge-purple" id="shareRoomBadge">Кімната: ------</span>
+        </div>
+        <p class="small-text" data-i18n="share_session_desc">
+          Це посилання автоматично містить поточну введену вище адресу сервера та код кімнати:
+        </p>
+        <div class="input-row">
+          <input type="text" id="shareUrlInput" readonly class="input-field select-all" placeholder="Створіть або увійдіть у кімнату" data-i18n-placeholder="ph_share_input">
+          <button type="button" class="btn btn-primary" id="btnCopyShareFromDrawer" data-i18n="btn_copy_link">
+            📋 Скопіювати
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -129,21 +146,29 @@
           <div class="panel">
             <div class="panel-header">
               <h3><span data-i18n="lobby_games_title">🎮 Список ігор для голосування</span> (<span id="gamesCount">0</span>)</h3>
-              <button type="button" class="btn btn-sm btn-secondary" id="btnToggleBulkAdd" data-i18n="btn_bulk_add">+ Списком</button>
+              <button type="button" class="btn btn-sm btn-secondary" id="btnToggleBulkAdd" data-i18n="btn_import_list">📥 Імпорт списку</button>
             </div>
 
-            <!-- Single Game Add Form -->
+            <!-- Single Game Add Form & Search -->
             <form id="addGameForm" class="add-game-form">
-              <input type="text" id="gameTitleInput" placeholder="Введіть назву гри (напр., Lethal Company)" class="input-field" data-i18n-placeholder="ph_game_title">
+              <input type="text" id="gameTitleInput" placeholder="Введіть назву гри (пошук / перевірка)..." class="input-field" data-i18n-placeholder="ph_game_title" autocomplete="off">
               <button type="submit" class="btn btn-primary" id="btnAddGame" data-i18n="btn_add_game">Додати</button>
             </form>
+            <div id="gameSearchFeedback" class="game-search-feedback"></div>
 
-            <!-- Bulk Add Panel (collapsed by default) -->
+            <!-- Import Games Panel -->
             <div id="bulkAddPanel" class="bulk-add-panel" style="display: none;">
-              <p class="small-text" data-i18n="bulk_hint">Вставте кілька ігор (кожна з нового рядка):</p>
-              <textarea id="bulkGamesInput" rows="4" class="input-field" placeholder="Valheim&#10;Phasmophobia&#10;Deep Rock Galactic&#10;Among Us"></textarea>
+              <div class="bulk-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <p class="small-text" style="margin: 0;" data-i18n="bulk_hint">Вставте назви ігор (кожна з нового рядка):</p>
+                <label class="import-file-btn" for="importFileInput">
+                  📁 <span data-i18n="btn_import_file">З файлу .txt</span>
+                  <input type="file" id="importFileInput" accept=".txt,text/plain" class="import-file-input">
+                </label>
+              </div>
+              <textarea id="bulkGamesInput" rows="5" class="input-field" placeholder="Valheim&#10;Phasmophobia&#10;Deep Rock Galactic&#10;Among Us"></textarea>
+              <div id="bulkPreviewCount" class="import-preview-count"></div>
               <div class="bulk-actions">
-                <button type="button" class="btn btn-sm btn-secondary" id="btnSubmitBulkGames" data-i18n="btn_add_all">Додати всі</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btnSubmitBulkGames" data-i18n="btn_add_all">📥 Імпортувати ігри</button>
                 <button type="button" class="btn btn-sm btn-ghost" id="btnCancelBulkGames" data-i18n="btn_cancel">Скасувати</button>
               </div>
             </div>

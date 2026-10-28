@@ -48,8 +48,20 @@
       btn_copy_invite: '📋 Скопіювати посилання',
       btn_leave: 'Вийти',
       lobby_games_title: '🎮 Список ігор для голосування',
-      btn_bulk_add: '+ Списком',
-      ph_game_title: 'Введіть назву гри (напр., Lethal Company)',
+      btn_import_list: '📥 Імпорт списку',
+      btn_import_file: 'З файлу .txt',
+      ph_game_title: 'Введіть назву гри (пошук / перевірка)...',
+      share_session_title: '🔗 Поділитися сесією з друзями',
+      share_session_desc: 'Це посилання автоматично містить поточну введену вище адресу сервера та код кімнати:',
+      btn_copy_link: '📋 Скопіювати',
+      ph_share_input: 'Створіть або увійдіть у кімнату',
+      btn_google_title: 'Шукати цю гру в Google',
+      feedback_already_in_list: '⚠️ "{0}" вже є в списку ігор!',
+      feedback_matches_found: '🔍 Схожі ігри в списку ({0}): {1}',
+      import_preview: 'Виявлено {0} рядків (нових: {1}, вже в списку: {2})',
+      warn_no_new_games: 'Усі зазначені ігри вже додано до списку!',
+      toast_share_copied: 'Посилання на сесію скопійовано! (Сервер: {0})',
+      btn_bulk_add: '📥 Імпорт списку',
       btn_add_game: 'Додати',
       bulk_hint: 'Вставте кілька ігор (кожна з нового рядка):',
       btn_add_all: 'Додати всі',
@@ -161,8 +173,20 @@
       btn_copy_invite: '📋 Copy Invite Link',
       btn_leave: 'Leave',
       lobby_games_title: '🎮 Games for Voting',
-      btn_bulk_add: '+ Bulk Add',
-      ph_game_title: 'Enter game title (e.g., Lethal Company)',
+      btn_import_list: '📥 Import List',
+      btn_import_file: 'From .txt file',
+      ph_game_title: 'Enter game title (search / duplicate check)...',
+      share_session_title: '🔗 Share Session with Friends',
+      share_session_desc: 'This link automatically uses the server address specified above and current room code:',
+      btn_copy_link: '📋 Copy Link',
+      ph_share_input: 'Create or join a room first',
+      btn_google_title: 'Search this game on Google',
+      feedback_already_in_list: '⚠️ "{0}" is already in the games list!',
+      feedback_matches_found: '🔍 Matching games in list ({0}): {1}',
+      import_preview: 'Found {0} items (new: {1}, already in list: {2})',
+      warn_no_new_games: 'All specified games are already in the list!',
+      toast_share_copied: 'Session link copied! (Server: {0})',
+      btn_bulk_add: '📥 Import List',
       btn_add_game: 'Add',
       bulk_hint: 'Paste multiple games (one per line):',
       btn_add_all: 'Add All',
@@ -294,6 +318,10 @@
     btnTestServer: document.getElementById('btnTestServer'),
     btnSaveServer: document.getElementById('btnSaveServer'),
     serverTestResult: document.getElementById('serverTestResult'),
+    shareSessionBox: document.getElementById('shareSessionBox'),
+    shareRoomBadge: document.getElementById('shareRoomBadge'),
+    shareUrlInput: document.getElementById('shareUrlInput'),
+    btnCopyShareFromDrawer: document.getElementById('btnCopyShareFromDrawer'),
     toastContainer: document.getElementById('toastContainer'),
 
     // Views
@@ -316,10 +344,13 @@
     participantsCount: document.getElementById('participantsCount'),
     addGameForm: document.getElementById('addGameForm'),
     gameTitleInput: document.getElementById('gameTitleInput'),
+    gameSearchFeedback: document.getElementById('gameSearchFeedback'),
     btnAddGame: document.getElementById('btnAddGame'),
     btnToggleBulkAdd: document.getElementById('btnToggleBulkAdd'),
     bulkAddPanel: document.getElementById('bulkAddPanel'),
     bulkGamesInput: document.getElementById('bulkGamesInput'),
+    importFileInput: document.getElementById('importFileInput'),
+    bulkPreviewCount: document.getElementById('bulkPreviewCount'),
     btnSubmitBulkGames: document.getElementById('btnSubmitBulkGames'),
     btnCancelBulkGames: document.getElementById('btnCancelBulkGames'),
     lobbyGamesList: document.getElementById('lobbyGamesList'),
@@ -466,6 +497,8 @@
     el.btnCloseServerSettings.addEventListener('click', toggleServerDrawer);
     el.btnTestServer.addEventListener('click', () => checkServerHealth(false));
     el.btnSaveServer.addEventListener('click', saveServerUrl);
+    if (el.serverUrlInput) el.serverUrlInput.addEventListener('input', updateShareUrl);
+    if (el.btnCopyShareFromDrawer) el.btnCopyShareFromDrawer.addEventListener('click', copyShareUrl);
 
     // Entry View
     el.btnCreateRoom.addEventListener('click', handleCreateRoom);
@@ -475,17 +508,25 @@
     });
 
     // Lobby View
-    el.btnCopyInvite.addEventListener('click', copyInviteLink);
+    el.btnCopyInvite.addEventListener('click', copyShareUrl);
     el.btnLeaveRoom.addEventListener('click', leaveRoom);
     el.addGameForm.addEventListener('submit', handleAddGame);
+    if (el.gameTitleInput) el.gameTitleInput.addEventListener('input', handleGameTitleSearch);
     el.btnToggleBulkAdd.addEventListener('click', () => {
       const isHidden = el.bulkAddPanel.style.display === 'none';
       el.bulkAddPanel.style.display = isHidden ? 'block' : 'none';
-      if (isHidden) el.bulkGamesInput.focus();
+      if (isHidden) {
+        el.bulkGamesInput.focus();
+        updateBulkPreview();
+      }
     });
+    if (el.bulkGamesInput) el.bulkGamesInput.addEventListener('input', updateBulkPreview);
+    if (el.importFileInput) el.importFileInput.addEventListener('change', handleImportFileInput);
     el.btnCancelBulkGames.addEventListener('click', () => {
       el.bulkAddPanel.style.display = 'none';
       el.bulkGamesInput.value = '';
+      if (el.bulkPreviewCount) el.bulkPreviewCount.textContent = '';
+      if (el.importFileInput) el.importFileInput.value = '';
     });
     el.btnSubmitBulkGames.addEventListener('click', handleSubmitBulkGames);
     el.btnStartVote.addEventListener('click', handleStartVote);
@@ -578,12 +619,54 @@
     state.serverUrl = cleanUrl(raw);
     localStorage.setItem('vote_server_url', state.serverUrl);
     updateServerPillDisplay();
+    updateShareUrl();
     checkServerHealth(false);
   }
 
   function toggleServerDrawer() {
     const isHidden = el.serverDrawer.style.display === 'none';
     el.serverDrawer.style.display = isHidden ? 'block' : 'none';
+    if (isHidden) {
+      updateShareUrl();
+    }
+  }
+
+  function getEffectiveServerUrl() {
+    if (el.serverUrlInput && el.serverUrlInput.value.trim()) {
+      return cleanUrl(el.serverUrlInput.value.trim());
+    }
+    return state.serverUrl || 'http://localhost:8000';
+  }
+
+  function updateShareUrl() {
+    if (!el.shareUrlInput) return;
+    const srv = getEffectiveServerUrl();
+    if (!state.roomId) {
+      el.shareUrlInput.value = '';
+      if (el.shareRoomBadge) el.shareRoomBadge.textContent = `${t('badge_room')}: ------`;
+      return;
+    }
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('room', state.roomId);
+    currentUrl.searchParams.set('server', srv);
+    currentUrl.searchParams.set('lang', state.lang);
+    el.shareUrlInput.value = currentUrl.toString();
+    if (el.shareRoomBadge) el.shareRoomBadge.textContent = `${t('badge_room')}: ${state.roomId}`;
+  }
+
+  function copyShareUrl() {
+    updateShareUrl();
+    if (!state.roomId) {
+      showToast(t('ph_share_input'), 'error');
+      return;
+    }
+    const url = el.shareUrlInput ? el.shareUrlInput.value : '';
+    const srv = getEffectiveServerUrl();
+    navigator.clipboard.writeText(url).then(() => {
+      showToast(t('toast_share_copied', srv), 'success');
+    }).catch(() => {
+      prompt(t('prompt_copy_link'), url);
+    });
   }
 
   function formatServerDisplay(url) {
@@ -693,6 +776,7 @@
   }
 
   function enterRoom() {
+    updateShareUrl();
     startPolling();
     renderCurrentState();
   }
@@ -704,6 +788,7 @@
     state.isHost = false;
     state.userDraftVotes = {};
     state.hasSubmittedVote = false;
+    updateShareUrl();
     showView('viewEntry');
   }
 
@@ -788,9 +873,18 @@
       el.lobbyGamesList.innerHTML = room.games.map(game => {
         const canDelete = state.isHost || game.added_by_id === state.clientId;
         return `
-          <div class="game-item">
+          <div class="game-item" id="game-item-${game.id}">
             <div class="game-item-info">
-              <span class="game-item-title">${escapeHtml(game.title)}</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;">
+                <span class="game-item-title">${escapeHtml(game.title)}</span>
+                <a href="https://www.google.com/search?q=${encodeURIComponent(game.title + ' game')}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-google-search" 
+                   title="${t('btn_google_title')}">
+                  🔍 Google
+                </a>
+              </div>
               <span class="game-item-author">${t('added_by_prefix')}${escapeHtml(game.added_by || t('unnamed_participant'))}</span>
             </div>
             ${canDelete ? `
@@ -821,12 +915,105 @@
         </li>
       `;
     }).join('');
+
+    // Re-apply search filter if user is actively searching
+    if (el.gameTitleInput && el.gameTitleInput.value.trim()) {
+      handleGameTitleSearch();
+    }
+  }
+
+  function handleGameTitleSearch() {
+    if (!el.gameTitleInput || !el.gameSearchFeedback) return;
+    const query = el.gameTitleInput.value.trim().toLowerCase();
+    const games = (state.roomData && state.roomData.games) || [];
+
+    document.querySelectorAll('#lobbyGamesList .game-item').forEach(item => {
+      item.classList.remove('highlighted');
+    });
+
+    if (!query) {
+      el.gameSearchFeedback.style.display = 'none';
+      el.gameSearchFeedback.className = 'game-search-feedback';
+      el.gameSearchFeedback.innerHTML = '';
+      return;
+    }
+
+    const exactMatch = games.find(g => g.title.toLowerCase().trim() === query);
+    const partialMatches = games.filter(g => g.title.toLowerCase().includes(query));
+
+    partialMatches.forEach(g => {
+      const itemElem = document.getElementById(`game-item-${g.id}`);
+      if (itemElem) itemElem.classList.add('highlighted');
+    });
+
+    if (exactMatch) {
+      el.gameSearchFeedback.className = 'game-search-feedback duplicate';
+      el.gameSearchFeedback.style.display = 'flex';
+      el.gameSearchFeedback.innerHTML = t('feedback_already_in_list', escapeHtml(exactMatch.title));
+    } else if (partialMatches.length > 0) {
+      el.gameSearchFeedback.className = 'game-search-feedback partial';
+      el.gameSearchFeedback.style.display = 'flex';
+      const titles = partialMatches.map(g => `<strong>${escapeHtml(g.title)}</strong>`).join(', ');
+      el.gameSearchFeedback.innerHTML = t('feedback_matches_found', partialMatches.length, titles);
+    } else {
+      el.gameSearchFeedback.style.display = 'none';
+      el.gameSearchFeedback.className = 'game-search-feedback';
+      el.gameSearchFeedback.innerHTML = '';
+    }
+  }
+
+  function updateBulkPreview() {
+    if (!el.bulkGamesInput || !el.bulkPreviewCount) return;
+    const raw = el.bulkGamesInput.value;
+    const lines = raw.split('\n').map(s => s.trim()).filter(Boolean);
+    if (lines.length === 0) {
+      el.bulkPreviewCount.textContent = '';
+      return;
+    }
+    const existingSet = new Set(((state.roomData && state.roomData.games) || []).map(g => g.title.toLowerCase().trim()));
+    let newCount = 0;
+    let dupCount = 0;
+    const seen = new Set();
+    lines.forEach(line => {
+      const lower = line.toLowerCase();
+      if (existingSet.has(lower) || seen.has(lower)) {
+        dupCount++;
+      } else {
+        newCount++;
+        seen.add(lower);
+      }
+    });
+    el.bulkPreviewCount.textContent = t('import_preview', lines.length, newCount, dupCount);
+  }
+
+  function handleImportFileInput(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target.result || '';
+      el.bulkGamesInput.value = text;
+      updateBulkPreview();
+    };
+    reader.readAsText(file);
   }
 
   async function handleAddGame(e) {
     e.preventDefault();
     const title = el.gameTitleInput.value.trim();
     if (!title) return;
+
+    // Duplicate check
+    const existing = (state.roomData && state.roomData.games || []).find(g => g.title.toLowerCase().trim() === title.toLowerCase());
+    if (existing) {
+      showToast(t('feedback_already_in_list', existing.title), 'error');
+      if (el.gameSearchFeedback) {
+        el.gameSearchFeedback.className = 'game-search-feedback duplicate';
+        el.gameSearchFeedback.style.display = 'flex';
+        el.gameSearchFeedback.innerHTML = t('feedback_already_in_list', escapeHtml(existing.title));
+      }
+      return;
+    }
 
     try {
       el.btnAddGame.disabled = true;
@@ -835,6 +1022,10 @@
         games: [title],
       });
       el.gameTitleInput.value = '';
+      if (el.gameSearchFeedback) {
+        el.gameSearchFeedback.style.display = 'none';
+        el.gameSearchFeedback.innerHTML = '';
+      }
       state.roomData = data.room;
       renderLobby();
       showToast(t('toast_game_added', title), 'success');
@@ -852,13 +1043,32 @@
     const list = raw.split('\n').map(s => s.trim()).filter(Boolean);
     if (list.length === 0) return;
 
+    // Filter out duplicates
+    const existingSet = new Set(((state.roomData && state.roomData.games) || []).map(g => g.title.toLowerCase().trim()));
+    const uniqueToSubmit = [];
+    const seen = new Set();
+    for (const title of list) {
+      const lower = title.toLowerCase();
+      if (!existingSet.has(lower) && !seen.has(lower)) {
+        seen.add(lower);
+        uniqueToSubmit.push(title);
+      }
+    }
+
+    if (uniqueToSubmit.length === 0) {
+      showToast(t('warn_no_new_games'), 'info');
+      return;
+    }
+
     try {
       el.btnSubmitBulkGames.disabled = true;
       const data = await apiRequest(`/api/rooms/${state.roomId}/games`, 'POST', {
         client_id: state.clientId,
-        games: list,
+        games: uniqueToSubmit,
       });
       el.bulkGamesInput.value = '';
+      if (el.bulkPreviewCount) el.bulkPreviewCount.textContent = '';
+      if (el.importFileInput) el.importFileInput.value = '';
       el.bulkAddPanel.style.display = 'none';
       state.roomData = data.room;
       renderLobby();
@@ -954,7 +1164,16 @@
         return `
           <div class="voting-card ${selectedRating !== null ? 'rated' : ''}" id="voting-card-${game.id}">
             <div class="voting-card-header">
-              <span class="voting-game-title">${escapeHtml(game.title)}</span>
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;">
+                <span class="voting-game-title">${escapeHtml(game.title)}</span>
+                <a href="https://www.google.com/search?q=${encodeURIComponent(game.title + ' game')}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-google-search" 
+                   title="${t('btn_google_title')}">
+                  🔍 Google
+                </a>
+              </div>
               <span class="badge badge-purple">${t('score_rating_prefix')}<strong id="rating-label-${game.id}">${ratingLabel}</strong></span>
             </div>
             <div class="rating-scale-container">
@@ -1140,17 +1359,7 @@
 
   // --- Copy Invite Link ---
   function copyInviteLink() {
-    if (!state.roomId) return;
-    const currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set('room', state.roomId);
-    currentUrl.searchParams.set('server', state.serverUrl);
-    currentUrl.searchParams.set('lang', state.lang);
-
-    navigator.clipboard.writeText(currentUrl.toString()).then(() => {
-      showToast(t('toast_invite_copied'), 'success');
-    }).catch(() => {
-      prompt(t('prompt_copy_link'), currentUrl.toString());
-    });
+    copyShareUrl();
   }
 
   // --- Toast Notifications ---
