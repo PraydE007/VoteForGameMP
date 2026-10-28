@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoteForMP — Голосування за спільні ігри</title>
+  <title id="pageTitle">VoteForMP — Голосування за спільні ігри</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,13 +17,20 @@
     <div class="logo">
       <span class="logo-icon">🎮</span>
       <span class="logo-text">VoteForMP</span>
-      <span class="logo-sub">Обирай гру разом</span>
+      <span class="logo-sub" data-i18n="logo_sub">Обирай гру разом</span>
     </div>
 
     <div class="header-right">
+      <!-- Language Switcher -->
+      <div class="lang-selector" aria-label="Language selection">
+        <button type="button" class="lang-btn active" data-lang="ua" id="btnLangUa">🇺🇦 UA</button>
+        <button type="button" class="lang-btn" data-lang="en" id="btnLangEn">🇬🇧 EN</button>
+      </div>
+
+      <!-- Server Pill -->
       <div class="server-pill" id="serverPill" title="Натисніть для налаштування сервера">
         <span class="status-dot disconnected" id="statusDot"></span>
-        <span class="server-text" id="serverLabel">Сервер: не підключено</span>
+        <span class="server-text" id="serverLabel" data-i18n="server_not_connected">Сервер: не підключено</span>
         <button type="button" class="btn-icon" id="btnToggleServerSettings" aria-label="Налаштування сервера">⚙️</button>
       </div>
     </div>
@@ -33,24 +40,24 @@
   <div class="server-drawer" id="serverDrawer" style="display: none;">
     <div class="server-drawer-content">
       <div class="drawer-header">
-        <h3>🔌 Налаштування бекенд-сервера</h3>
+        <h3 data-i18n="server_settings_title">🔌 Налаштування бекенд-сервера</h3>
         <button type="button" class="btn-close" id="btnCloseServerSettings">&times;</button>
       </div>
-      <p class="drawer-desc">
+      <p class="drawer-desc" data-i18n="server_settings_desc">
         Вкажіть адресу вашого Python-сервера (FastAPI). Вона зберігається у вашому браузері.
       </p>
       <div class="input-row">
         <input type="text" id="serverUrlInput" placeholder="http://localhost:8000" class="input-field">
-        <button type="button" class="btn btn-secondary" id="btnTestServer">Перевірити з'єднання</button>
-        <button type="button" class="btn btn-primary" id="btnSaveServer">Зберегти</button>
+        <button type="button" class="btn btn-secondary" id="btnTestServer" data-i18n="btn_test_connection">Перевірити з'єднання</button>
+        <button type="button" class="btn btn-primary" id="btnSaveServer" data-i18n="btn_save">Зберегти</button>
       </div>
       <div class="server-test-result" id="serverTestResult"></div>
 
       <div class="drawer-hint">
-        <strong>💡 Підказка для GitHub Pages:</strong>
-        <p>Якщо сайт відкритий через <code>https://...github.io</code>, сучасні браузери блокують запити до незахищеного <code>http://</code> (Mixed Content). Для гри онлайн запустіть безкоштовний тунель:</p>
+        <strong data-i18n="server_hint_title">💡 Підказка для GitHub Pages:</strong>
+        <p data-i18n="server_hint_p1">Якщо сайт відкритий через <code>https://...github.io</code>, сучасні браузери блокують запити до незахищеного <code>http://</code> (Mixed Content). Для гри онлайн запустіть безкоштовний тунель:</p>
         <code>ngrok http 8000</code> або <code>cloudflared tunnel --url http://localhost:8000</code>
-        <p>і вставте отримане <code>https://...</code> посилання вище.</p>
+        <p data-i18n="server_hint_p2">і вставте отримане <code>https://...</code> посилання вище.</p>
       </div>
     </div>
   </div>
@@ -64,36 +71,36 @@
     <!-- VIEW 1: AUTH & ROOM ENTRY -->
     <section id="viewEntry" class="view-card active">
       <div class="hero-section">
-        <h1>Спільний вибір гри для компанії</h1>
-        <p class="subtitle">Створюйте сесію, додавайте варіанти ігор, ставте оцінки від 1 до 5 та знаходьте ідеальний спільний варіант за кілька хвилин!</p>
+        <h1 data-i18n="hero_title">Спільний вибір гри для компанії</h1>
+        <p class="subtitle" data-i18n="hero_subtitle">Створюйте сесію, додавайте варіанти ігор, ставте оцінки від 1 до 5 та знаходьте ідеальний спільний варіант за кілька хвилин!</p>
       </div>
 
       <div class="form-card">
         <div class="form-group">
-          <label for="playerNameInput">Ваше ім'я / нікнейм:</label>
-          <input type="text" id="playerNameInput" placeholder="Наприклад: GhostRider, Дмитро, Катя..." maxlength="30" class="input-field input-lg">
+          <label for="playerNameInput" data-i18n="label_player_name">Ваше ім'я / нікнейм:</label>
+          <input type="text" id="playerNameInput" placeholder="Наприклад: GhostRider, Дмитро, Катя..." maxlength="30" class="input-field input-lg" data-i18n-placeholder="ph_player_name">
         </div>
 
         <div class="entry-actions-grid">
           <!-- Create Room Card -->
           <div class="action-card">
             <div class="action-card-icon">👑</div>
-            <h3>Створити нову сесію</h3>
-            <p>Станьте хостом, отримайте унікальний код кімнати та запросіть друзів.</p>
+            <h3 data-i18n="card_create_title">Створити нову сесію</h3>
+            <p data-i18n="card_create_desc">Станьте хостом, отримайте унікальний код кімнати та запросіть друзів.</p>
             <button type="button" class="btn btn-primary btn-block" id="btnCreateRoom">
-              <span>Створити кімнату</span>
+              <span data-i18n="btn_create_room">Створити кімнату</span>
             </button>
           </div>
 
           <!-- Join Room Card -->
           <div class="action-card">
             <div class="action-card-icon">👥</div>
-            <h3>Приєднатися до сесії</h3>
-            <p>Введіть 6-значний код кімнати, який вам надіслав друг.</p>
+            <h3 data-i18n="card_join_title">Приєднатися до сесії</h3>
+            <p data-i18n="card_join_desc">Введіть 6-значний код кімнати, який вам надіслав друг.</p>
             <div class="join-input-group">
-              <input type="text" id="roomCodeInput" placeholder="Код: ABCD12" maxlength="10" class="input-field text-center uppercase">
+              <input type="text" id="roomCodeInput" placeholder="Код: ABCD12" maxlength="10" class="input-field text-center uppercase" data-i18n-placeholder="ph_room_code">
               <button type="button" class="btn btn-secondary btn-block" id="btnJoinRoom">
-                <span>Приєднатися</span>
+                <span data-i18n="btn_join_room">Приєднатися</span>
               </button>
             </div>
           </div>
@@ -105,14 +112,14 @@
     <section id="viewLobby" class="view-card" style="display: none;">
       <div class="lobby-header-bar">
         <div class="room-info">
-          <span class="badge badge-purple">Кімната</span>
+          <span class="badge badge-purple" data-i18n="badge_room">Кімната</span>
           <span class="room-code-display" id="lobbyRoomCode">------</span>
-          <button type="button" class="btn btn-sm btn-outline" id="btnCopyInvite">
+          <button type="button" class="btn btn-sm btn-outline" id="btnCopyInvite" data-i18n="btn_copy_invite">
             📋 Скопіювати посилання
           </button>
         </div>
         <div class="lobby-header-actions">
-          <button type="button" class="btn btn-sm btn-outline-danger" id="btnLeaveRoom">Вийти</button>
+          <button type="button" class="btn btn-sm btn-outline-danger" id="btnLeaveRoom" data-i18n="btn_leave">Вийти</button>
         </div>
       </div>
 
@@ -121,30 +128,30 @@
         <div class="lobby-left">
           <div class="panel">
             <div class="panel-header">
-              <h3>🎮 Список ігор для голосування (<span id="gamesCount">0</span>)</h3>
-              <button type="button" class="btn btn-sm btn-secondary" id="btnToggleBulkAdd">+ Списком</button>
+              <h3><span data-i18n="lobby_games_title">🎮 Список ігор для голосування</span> (<span id="gamesCount">0</span>)</h3>
+              <button type="button" class="btn btn-sm btn-secondary" id="btnToggleBulkAdd" data-i18n="btn_bulk_add">+ Списком</button>
             </div>
 
             <!-- Single Game Add Form -->
             <form id="addGameForm" class="add-game-form">
-              <input type="text" id="gameTitleInput" placeholder="Введіть назву гри (напр., Lethal Company)" class="input-field">
-              <button type="submit" class="btn btn-primary" id="btnAddGame">Додати</button>
+              <input type="text" id="gameTitleInput" placeholder="Введіть назву гри (напр., Lethal Company)" class="input-field" data-i18n-placeholder="ph_game_title">
+              <button type="submit" class="btn btn-primary" id="btnAddGame" data-i18n="btn_add_game">Додати</button>
             </form>
 
             <!-- Bulk Add Panel (collapsed by default) -->
             <div id="bulkAddPanel" class="bulk-add-panel" style="display: none;">
-              <p class="small-text">Вставте кілька ігор (кожна з нового рядка):</p>
+              <p class="small-text" data-i18n="bulk_hint">Вставте кілька ігор (кожна з нового рядка):</p>
               <textarea id="bulkGamesInput" rows="4" class="input-field" placeholder="Valheim&#10;Phasmophobia&#10;Deep Rock Galactic&#10;Among Us"></textarea>
               <div class="bulk-actions">
-                <button type="button" class="btn btn-sm btn-secondary" id="btnSubmitBulkGames">Додати всі</button>
-                <button type="button" class="btn btn-sm btn-ghost" id="btnCancelBulkGames">Скасувати</button>
+                <button type="button" class="btn btn-sm btn-secondary" id="btnSubmitBulkGames" data-i18n="btn_add_all">Додати всі</button>
+                <button type="button" class="btn btn-sm btn-ghost" id="btnCancelBulkGames" data-i18n="btn_cancel">Скасувати</button>
               </div>
             </div>
 
             <!-- Games List -->
             <div class="games-list" id="lobbyGamesList">
               <div class="empty-state">
-                <p>Ігри ще не додано. Напишіть назву гри вище та натисніть "Додати"!</p>
+                <p data-i18n="empty_games">Ігри ще не додано. Напишіть назву гри вище та натисніть "Додати"!</p>
               </div>
             </div>
           </div>
@@ -155,10 +162,10 @@
           <!-- Host Control Banner -->
           <div class="panel host-panel" id="hostControlPanel">
             <div class="host-badge-row">
-              <span id="roleBadge" class="badge badge-gold">👑 Ви Хост</span>
+              <span id="roleBadge" class="badge badge-gold" data-i18n="host_you_are_host">👑 Ви Хост</span>
             </div>
             <p id="hostStatusMsg">Коли всі гравці зайдуть та додадуть бажані ігри, запустіть голосування:</p>
-            <button type="button" class="btn btn-success btn-block btn-lg" id="btnStartVote">
+            <button type="button" class="btn btn-success btn-block btn-lg" id="btnStartVote" data-i18n="btn_start_vote">
               ▶️ Почати голосування!
             </button>
           </div>
@@ -166,7 +173,7 @@
           <!-- Participants List -->
           <div class="panel">
             <div class="panel-header">
-              <h3>👥 Гравці в кімнаті (<span id="participantsCount">0</span>)</h3>
+              <h3><span data-i18n="lobby_players_title">👥 Гравці в кімнаті</span> (<span id="participantsCount">0</span>)</h3>
             </div>
             <ul class="participants-list" id="lobbyParticipantsList">
               <!-- Dynamically populated -->
@@ -180,8 +187,8 @@
     <section id="viewVoting" class="view-card" style="display: none;">
       <div class="voting-banner">
         <div>
-          <h2>Оцініть кожну гру від 1 до 5 зірок</h2>
-          <p class="subtitle">Поставте оцінку варіантам: 1 — зовсім не хочу грати, 5 — дуже хочу!</p>
+          <h2 data-i18n="voting_title">Оцініть кожну гру від 1 до 5 зірок</h2>
+          <p class="subtitle" data-i18n="voting_subtitle">Поставте оцінку варіантам: 1 — зовсім не хочу грати, 5 — дуже хочу!</p>
         </div>
         <div class="voter-progress-pill">
           <span id="votingProgressText">Оцінено 0 із 0</span>
@@ -196,7 +203,7 @@
 
         <div class="voting-submit-bar" id="votingSubmitBar">
           <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitVotes">
-            ✅ Надіслати мій голос
+            <span data-i18n="btn_submit_votes">✅ Надіслати мій голос</span>
           </button>
         </div>
       </form>
@@ -204,12 +211,12 @@
       <!-- Waiting State After Voting -->
       <div id="votedWaitingState" class="voted-waiting-card" style="display: none;">
         <div class="spinner"></div>
-        <h3>Ваш голос успішно зараховано!</h3>
-        <p>Очікуємо, поки решта гравців завершить голосування...</p>
+        <h3 data-i18n="voted_success_title">Ваш голос успішно зараховано!</h3>
+        <p data-i18n="voted_waiting_others">Очікуємо, поки решта гравців завершить голосування...</p>
         
         <div class="voting-status-box">
           <div class="status-summary">
-            Проголосувало: <strong id="votedCountLabel">0 / 0</strong>
+            <span data-i18n="voted_count_label">Проголосувало:</span> <strong id="votedCountLabel">0 / 0</strong>
           </div>
           <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="votedProgressBar" style="width: 0%;"></div>
@@ -221,8 +228,8 @@
         </div>
 
         <div class="host-emergency-action" id="hostEmergencyAction" style="display: none;">
-          <p class="small-text">Хтось затримався чи пішов AFK? Ви можете завершити голосування достроково:</p>
-          <button type="button" class="btn btn-warning" id="btnForceFinishVote">
+          <p class="small-text" data-i18n="host_emergency_hint">Хтось затримався чи пішов AFK? Ви можете завершити голосування достроково:</p>
+          <button type="button" class="btn btn-warning" id="btnForceFinishVote" data-i18n="btn_force_finish">
             ⚡ Завершити голосування зараз
           </button>
         </div>
@@ -232,8 +239,8 @@
     <!-- VIEW 4: RESULTS -->
     <section id="viewResults" class="view-card" style="display: none;">
       <div class="results-header">
-        <span class="badge badge-green">Голосування завершено</span>
-        <h1 id="resultsTitle">🏆 Результати вибору</h1>
+        <span class="badge badge-green" data-i18n="results_badge">Голосування завершено</span>
+        <h1 id="resultsTitle" data-i18n="results_title">🏆 Результати вибору</h1>
       </div>
 
       <!-- Winners Podium Section -->
@@ -244,7 +251,7 @@
       <!-- Full Leaderboard Table / Cards -->
       <div class="panel leaderboard-panel">
         <div class="panel-header">
-          <h3>📊 Повна таблиця результатів</h3>
+          <h3 data-i18n="leaderboard_title">📊 Повна таблиця результатів</h3>
           <span class="text-muted" id="totalVotersLabel">Всього учасників: 0</span>
         </div>
 
@@ -256,14 +263,14 @@
       <!-- Results Footer Controls -->
       <div class="results-actions">
         <div id="hostResultsControls" style="display: none;">
-          <button type="button" class="btn btn-primary btn-lg" id="btnRestartRound">
+          <button type="button" class="btn btn-primary btn-lg" id="btnRestartRound" data-i18n="btn_restart_round">
             🔄 Почати новий раунд (з цими ж іграми)
           </button>
-          <button type="button" class="btn btn-secondary btn-lg" id="btnResetAll">
+          <button type="button" class="btn btn-secondary btn-lg" id="btnResetAll" data-i18n="btn_reset_all">
             ➕ Нове голосування (новий список)
           </button>
         </div>
-        <button type="button" class="btn btn-outline btn-lg" id="btnExitToMenu">
+        <button type="button" class="btn btn-outline btn-lg" id="btnExitToMenu" data-i18n="btn_exit_menu">
           🚪 Вийти в головне меню
         </button>
       </div>
@@ -272,10 +279,9 @@
   </main>
 
   <footer class="app-footer">
-    <p>VoteForMP &bull; Швидкий вибір спільних ігор &bull; Python Backend & GitHub Pages</p>
+    <p data-i18n="footer_text">VoteForMP &bull; Швидкий вибір спільних ігор &bull; Python Backend & GitHub Pages</p>
   </footer>
 
   <script src="app.js"></script>
 </body>
 </html>
-
