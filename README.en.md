@@ -14,7 +14,7 @@ A simple, fast, and real-time multiplayer polling web application designed to he
 - 🌐 **GitHub Pages Native:** Pure HTML5, modern CSS3, and vanilla JS — zero build step, no npm/bundler dependencies.
 - 🔗 **One-Click Shareable Links:** Copy direct invite links that pre-fill both server address and room code for your friends.
 - 🎮 **Flexible Game Addition:** Add games individually or paste multiple titles in bulk.
-- ⭐ **1–5 Rating System:** Every participant rates each game on a scale of 1 to 5 stars.
+- ⭐ **-2 to +2 Rating Scale:** Every participant rates each game from -2 to +2 points (-2 = don't want, -1 = not really, 0 = neutral, +1 = would play, +2 = must play!).
 - 🏆 **Auto-Reveal & Tie Detection:** As soon as all participants submit their ratings, results are revealed immediately. If multiple games share the highest average rating, **all tied winners are highlighted**.
 
 ---
@@ -94,7 +94,7 @@ Copy the generated `https://...` address (e.g. `https://random-words.trycloudfla
 1. **Connect:** Open the website. Ensure the status indicator shows connected (green dot).
 2. **Create / Join:** Enter your nickname and click *Create Room* (you become the host) or join an existing room with a 6-character code. Click *«Copy invite link»* and send it to your group.
 3. **Add games:** Everyone in the lobby can submit game titles.
-4. **Vote:** The host starts the vote. Each player rates each game from 1 to 5 stars and clicks *Submit Votes*.
+4. **Vote:** The host starts the vote. Each player rates each game on a -2 to +2 scale and clicks *Submit Votes*.
 5. **Results:** When the last participant votes, the results podium automatically displays the highest-rated game (or multiple winners in case of a tie), alongside a complete ranked leaderboard.
 
 ---

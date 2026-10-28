@@ -65,6 +65,15 @@ def generate_room_code() -> str:
     digits = "".join(random.choices(string.digits, k=2))
     return f"{letters}{digits}"
 
+def normalize_rating(val: int) -> Optional[int]:
+    """Normalizes rating to -2, -1, 0, +1, +2 scale."""
+    if -2 <= val <= 2:
+        return val
+    if 1 <= val <= 5:
+        # Legacy fallback: map 1 -> -2, 2 -> -1, 3 -> 0, 4 -> +1, 5 -> +2
+        return val - 3
+    return None
+
 def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
     games = room.get("games", [])
     votes_by_participant = room.get("votes", {})
@@ -77,18 +86,24 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
     for game in games:
         gid = game["id"]
         ratings = []
-        breakdown = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+        breakdown = {-2: 0, -1: 0, 0: 0, 1: 0, 2: 0}
         
         for participant_id, user_votes in votes_by_participant.items():
             if gid in user_votes:
-                r = int(user_votes[gid])
-                if 1 <= r <= 5:
-                    ratings.append(r)
-                    breakdown[r] += 1
+                try:
+                    r = int(user_votes[gid])
+                    norm_r = normalize_rating(r)
+                    if norm_r is not None:
+                        ratings.append(norm_r)
+                        breakdown[norm_r] += 1
+                except (ValueError, TypeError):
+                    pass
         
         vote_count = len(ratings)
         total_score = sum(ratings)
         avg_score = round(total_score / vote_count, 2) if vote_count > 0 else 0.0
+        formatted_avg = f"+{avg_score}" if avg_score > 0 else str(avg_score)
+        formatted_total = f"+{total_score}" if total_score > 0 else str(total_score)
         
         leaderboard.append({
             "id": gid,
@@ -97,6 +112,8 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
             "vote_count": vote_count,
             "total_score": total_score,
             "avg_score": avg_score,
+            "formatted_avg": formatted_avg,
+            "formatted_total": formatted_total,
             "breakdown": breakdown,
             "is_winner": False
         })
@@ -328,13 +345,14 @@ def submit_vote(room_id: str, req: SubmitVoteRequest):
         if gid in valid_game_ids:
             try:
                 r = int(rating)
-                if 1 <= r <= 5:
-                    cleaned_votes[gid] = r
+                norm_r = normalize_rating(r)
+                if norm_r is not None:
+                    cleaned_votes[gid] = norm_r
             except (ValueError, TypeError):
                 pass
                 
     if not cleaned_votes:
-        raise HTTPException(status_code=400, detail="Будь ласка, поставте оцінки від 1 до 5 хоча б одній грі.")
+        raise HTTPException(status_code=400, detail="Будь ласка, поставте оцінки хоча б одній грі.")
         
     room["votes"][req.client_id] = cleaned_votes
     room["updated_at"] = time.time()

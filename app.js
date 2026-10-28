@@ -28,7 +28,7 @@
       err_failed_to_fetch: 'Не вдалося з\'єднатися із сервером ({0}). Переконайтеся, що backend запущено.',
       err_server_error: 'Помилка сервера ({0})',
       hero_title: 'Спільний вибір гри для компанії',
-      hero_subtitle: 'Створюйте сесію, додавайте варіанти ігор, ставте оцінки від 1 до 5 та знаходьте ідеальний спільний варіант за кілька хвилин!',
+      hero_subtitle: 'Створюйте сесію, додавайте варіанти ігор, ставте оцінки від -2 до +2 та знаходьте ідеальний спільний варіант за кілька хвилин!',
       label_player_name: 'Ваше ім\'я / нікнейм:',
       ph_player_name: 'Наприклад: GhostRider, Дмитро, Катя...',
       card_create_title: 'Створити нову сесію',
@@ -71,8 +71,8 @@
       confirm_kick_participant: 'Вилучити цього гравця з кімнати?',
       toast_participant_kicked: 'Гравця вилучено.',
       toast_vote_started: 'Голосування відкрито! Оцініть кожну гру.',
-      voting_title: 'Оцініть кожну гру від 1 до 5 зірок',
-      voting_subtitle: 'Поставте оцінку варіантам: 1 — зовсім не хочу грати, 5 — дуже хочу!',
+      voting_title: 'Оцініть кожну гру від -2 до +2 балів',
+      voting_subtitle: 'Поставте оцінку: -2 — не хочу грати, +2 — дуже хочу!',
       voting_progress: 'Оцінено {0} із {1}',
       score_rating_prefix: 'Оцінка: ',
       btn_submit_votes: '✅ Надіслати мій голос',
@@ -93,7 +93,7 @@
       results_title: '🏆 Результати вибору',
       results_no_votes_title: 'Немає голосів',
       results_no_votes_desc: 'Жодної оцінки не було отримано під час цієї сесії.',
-      tie_banner: '🎉 НІЧИЯ! Одразу кілька ігор набрали однаково найвищий бал ({0} ⭐)! Всі вони є переможцями:',
+      tie_banner: '🎉 НІЧИЯ! Одразу кілька ігор набрали однаково найвищий бал ({0})! Всі вони є переможцями:',
       winner_badge_single: 'Найбільш обраний варіант',
       winner_badge_tie: 'Переможець #{0} (Нічия)',
       stat_avg_score: 'Середній бал:',
@@ -115,11 +115,11 @@
       prompt_copy_link: 'Скопіюйте це посилання:',
       footer_text: 'VoteForMP &bull; Швидкий вибір спільних ігор &bull; Python Backend & GitHub Pages',
       ratings: {
-        1: { icon: '🛑', label: 'Не хочу' },
-        2: { icon: '😕', label: 'Не дуже' },
-        3: { icon: '😐', label: 'Зіграю' },
-        4: { icon: '👍', label: 'Хочу' },
-        5: { icon: '🔥', label: 'Топ / Дуже хочу!' },
+        '-2': { icon: '🛑', label: 'Не хочу (-2)' },
+        '-1': { icon: '😕', label: 'Не дуже (-1)' },
+        '0':  { icon: '😐', label: 'Зіграю (0)' },
+        '1':  { icon: '👍', label: 'Хочу (+1)' },
+        '2':  { icon: '🔥', label: 'Топ! (+2)' },
       }
     },
     en: {
@@ -142,7 +142,7 @@
       err_failed_to_fetch: 'Could not connect to server ({0}). Please verify that backend is running.',
       err_server_error: 'Server error ({0})',
       hero_title: 'Choose the Perfect Game Together',
-      hero_subtitle: 'Create a session, add game titles, rate each option from 1 to 5 stars, and find the group favorite in minutes!',
+      hero_subtitle: 'Create a session, add game titles, rate each option from -2 to +2 points, and find the group favorite in minutes!',
       label_player_name: 'Your Name / Nickname:',
       ph_player_name: 'E.g., GhostRider, Alex, Kate...',
       card_create_title: 'Create New Session',
@@ -185,8 +185,8 @@
       confirm_kick_participant: 'Kick this player from the room?',
       toast_participant_kicked: 'Player removed.',
       toast_vote_started: 'Voting is open! Rate each game.',
-      voting_title: 'Rate Each Game from 1 to 5 Stars',
-      voting_subtitle: 'Rate each option: 1 — really don\'t want to play, 5 — really want to play!',
+      voting_title: 'Rate Each Game from -2 to +2 Points',
+      voting_subtitle: 'Rate each option: -2 — don\'t want to play, +2 — really want to play!',
       voting_progress: 'Rated {0} of {1}',
       score_rating_prefix: 'Rating: ',
       btn_submit_votes: '✅ Submit My Votes',
@@ -207,7 +207,7 @@
       results_title: '🏆 Voting Results',
       results_no_votes_title: 'No Votes',
       results_no_votes_desc: 'No ratings were submitted during this session.',
-      tie_banner: '🎉 TIE! Multiple games received the highest rating ({0} ⭐)! They are all winners:',
+      tie_banner: '🎉 TIE! Multiple games received the highest rating ({0})! They are all winners:',
       winner_badge_single: 'Most Picked Option',
       winner_badge_tie: 'Winner #{0} (Tie)',
       stat_avg_score: 'Average score:',
@@ -229,11 +229,11 @@
       prompt_copy_link: 'Copy this link:',
       footer_text: 'VoteForMP &bull; Easy game polling for groups &bull; Python Backend & GitHub Pages',
       ratings: {
-        1: { icon: '🛑', label: 'Don\'t want' },
-        2: { icon: '😕', label: 'Not really' },
-        3: { icon: '😐', label: 'Neutral / OK' },
-        4: { icon: '👍', label: 'Would play' },
-        5: { icon: '🔥', label: 'Must play / Top!' },
+        '-2': { icon: '🛑', label: 'Don\'t want (-2)' },
+        '-1': { icon: '😕', label: 'Not really (-1)' },
+        '0':  { icon: '😐', label: 'Neutral / OK (0)' },
+        '1':  { icon: '👍', label: 'Would play (+1)' },
+        '2':  { icon: '🔥', label: 'Must play! (+2)' },
       }
     }
   };
@@ -264,9 +264,20 @@
     return val;
   }
 
+  function formatScoreSign(num) {
+    if (num === null || num === undefined) return '0';
+    if (typeof num === 'string') {
+      if (num.startsWith('+') || num.startsWith('-')) return num;
+      num = parseFloat(num);
+    }
+    if (isNaN(num)) return '0';
+    return num > 0 ? `+${num}` : `${num}`;
+  }
+
   function getRatingInfo(score) {
+    const key = String(score);
     const dict = TRANSLATIONS[state.lang] || TRANSLATIONS.ua;
-    return (dict.ratings && dict.ratings[score]) || TRANSLATIONS.ua.ratings[score];
+    return (dict.ratings && dict.ratings[key]) || TRANSLATIONS.ua.ratings[key] || { icon: '⭐', label: '' };
   }
 
   // --- DOM Elements ---
@@ -937,25 +948,29 @@
       const ratedCount = Object.keys(state.userDraftVotes).length;
       el.votingProgressText.textContent = t('voting_progress', ratedCount, totalGames);
 
-      // Render cards with current locale ratings
+      // Render cards with current locale ratings (-2 to +2 scale)
+      const scaleValues = [-2, -1, 0, 1, 2];
       el.votingGamesContainer.innerHTML = games.map(game => {
-        const selectedRating = state.userDraftVotes[game.id] || null;
+        const selectedRating = state.userDraftVotes[game.id] !== undefined ? state.userDraftVotes[game.id] : null;
+        const ratingLabel = selectedRating !== null ? formatScoreSign(selectedRating) : '—';
         return `
-          <div class="voting-card ${selectedRating ? 'rated' : ''}" id="voting-card-${game.id}">
+          <div class="voting-card ${selectedRating !== null ? 'rated' : ''}" id="voting-card-${game.id}">
             <div class="voting-card-header">
               <span class="voting-game-title">${escapeHtml(game.title)}</span>
-              <span class="badge badge-purple">${t('score_rating_prefix')}<strong id="rating-label-${game.id}">${selectedRating ? selectedRating + ' / 5' : '—'}</strong></span>
+              <span class="badge badge-purple">${t('score_rating_prefix')}<strong id="rating-label-${game.id}">${ratingLabel}</strong></span>
             </div>
             <div class="rating-scale-container">
-              ${[1, 2, 3, 4, 5].map(star => {
-                const isActive = selectedRating === star;
-                const info = getRatingInfo(star);
+              ${scaleValues.map(val => {
+                const isActive = selectedRating === val;
+                const info = getRatingInfo(val);
+                const displayVal = formatScoreSign(val);
+                const typeClass = val < 0 ? 'rating-btn-neg' : (val > 0 ? 'rating-btn-pos' : 'rating-btn-zero');
                 return `
                   <button type="button" 
-                    class="rating-btn ${isActive ? 'active' : ''}" 
-                    onclick="window.VoteApp.setRating('${game.id}', ${star})"
-                    id="star-btn-${game.id}-${star}">
-                    <span class="rating-val">${star} ⭐</span>
+                    class="rating-btn ${typeClass} ${isActive ? 'active' : ''}" 
+                    onclick="window.VoteApp.setRating('${game.id}', ${val})"
+                    id="star-btn-${game.id}-${val}">
+                    <span class="rating-val">${info.icon} ${displayVal}</span>
                     <span class="rating-desc">${info.label}</span>
                   </button>
                 `;
@@ -1055,7 +1070,7 @@
       if (isTie) {
         tieNoticeHtml = `
           <div class="tie-banner">
-            ${t('tie_banner', winners[0].avg_score)}
+            ${t('tie_banner', winners[0].formatted_avg || formatScoreSign(winners[0].avg_score))}
           </div>
         `;
       }
@@ -1067,9 +1082,9 @@
             <div class="winner-badge">${isTie ? t('winner_badge_tie', idx + 1) : t('winner_badge_single')}</div>
             <div class="winner-title">${escapeHtml(w.title)}</div>
             <div class="winner-stats">
-              <div>${t('stat_avg_score')} <span class="winner-score-highlight">${w.avg_score} / 5.0</span></div>
+              <div>${t('stat_avg_score')} <span class="winner-score-highlight">${w.formatted_avg || formatScoreSign(w.avg_score)}</span></div>
               <div>${t('stat_votes')} <strong>${w.vote_count}</strong></div>
-              <div>${t('stat_total_score')} <strong>${w.total_score}</strong></div>
+              <div>${t('stat_total_score')} <strong>${w.formatted_total || formatScoreSign(w.total_score)}</strong></div>
             </div>
           </div>
         `;
@@ -1094,8 +1109,8 @@
             <div class="leaderboard-game-meta">${t('added_by_prefix')}${escapeHtml(item.added_by)} &bull; ${item.vote_count} ${t('voted_players_suffix')}</div>
           </div>
           <div class="leaderboard-score-box">
-            <span class="score-badge">${item.avg_score} ⭐</span>
-            <span class="small-text text-muted">(${item.total_score} ${t('pts_suffix')})</span>
+            <span class="score-badge">${item.formatted_avg || formatScoreSign(item.avg_score)}</span>
+            <span class="small-text text-muted">(${item.formatted_total || formatScoreSign(item.total_score)} ${t('pts_suffix')})</span>
           </div>
         </div>
       `;
