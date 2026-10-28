@@ -101,6 +101,7 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
         gid = game["id"]
         ratings = []
         breakdown = {-2: 0, -1: 0, 0: 0, 1: 0, 2: 0}
+        voter_tags = []
         
         for participant_id, user_votes in votes_by_participant.items():
             if gid in user_votes:
@@ -110,8 +111,18 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
                     if norm_r is not None:
                         ratings.append(norm_r)
                         breakdown[norm_r] += 1
+                        p_name = room.get("participants", {}).get(participant_id, {}).get("name", "Гравець")
+                        voter_tags.append({
+                            "user_id": participant_id,
+                            "name": p_name,
+                            "rating": norm_r,
+                            "formatted_rating": f"+{norm_r}" if norm_r > 0 else str(norm_r)
+                        })
                 except (ValueError, TypeError):
                     pass
+        
+        # Сортуємо теги оцінок: спочатку найвищі оцінки
+        voter_tags.sort(key=lambda vt: (vt["rating"], vt["name"]), reverse=True)
         
         vote_count = len(ratings)
         # Розумний сумарний бал (без середнього арифметичного):
@@ -128,6 +139,7 @@ def calculate_room_results(room: Dict[str, Any]) -> Dict[str, Any]:
             "formatted_score": formatted_score,
             "formatted_total": formatted_score,
             "breakdown": breakdown,
+            "voter_tags": voter_tags,
             "is_winner": False
         })
     

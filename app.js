@@ -1261,6 +1261,22 @@
     }
   }
 
+  function renderVoterTagsHtml(voterTags) {
+    if (!voterTags || voterTags.length === 0) return '';
+    const tagsHtml = voterTags.map(vt => {
+      const typeClass = vt.rating < 0 ? 'voter-tag-neg' : (vt.rating > 0 ? 'voter-tag-pos' : 'voter-tag-zero');
+      const info = getRatingInfo(vt.rating);
+      const icon = info ? info.icon : '';
+      return `
+        <span class="voter-tag ${typeClass}" title="${escapeHtml(vt.name)}: ${vt.formatted_rating}">
+          <span class="voter-tag-name">${escapeHtml(vt.name)}:</span>
+          <span class="voter-tag-score">${icon} ${vt.formatted_rating}</span>
+        </span>
+      `;
+    }).join('');
+    return `<div class="voter-tags-container">${tagsHtml}</div>`;
+  }
+
   // --- Results Rendering ---
   function renderResults() {
     const room = state.roomData;
@@ -1304,6 +1320,7 @@
               <div>${t('stat_score')} <span class="winner-score-highlight">${scoreStr} ${t('pts_suffix')}</span></div>
               <div>${t('stat_votes')} <strong>${w.vote_count}</strong></div>
             </div>
+            ${renderVoterTagsHtml(w.voter_tags)}
           </div>
         `;
       }).join('');
@@ -1326,6 +1343,7 @@
           <div class="leaderboard-game-info">
             <div class="leaderboard-game-title">${escapeHtml(item.title)}</div>
             <div class="leaderboard-game-meta">${t('added_by_prefix')}${escapeHtml(item.added_by)} &bull; ${item.vote_count} ${t('voted_players_suffix')}</div>
+            ${renderVoterTagsHtml(item.voter_tags)}
           </div>
           <div class="leaderboard-score-box">
             <span class="score-badge">${scoreStr} ${t('pts_suffix')}</span>

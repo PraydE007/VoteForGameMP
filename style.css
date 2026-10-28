@@ -1277,6 +1277,75 @@ body {
   margin-top: 0.4rem;
 }
 
+/* Voter Nickname Tags on Results */
+.voter-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.winner-card .voter-tags-container {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.voter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.voter-tag:hover {
+  transform: translateY(-1px);
+}
+
+.voter-tag-name {
+  color: var(--text-muted);
+}
+
+.voter-tag-score {
+  font-weight: 800;
+}
+
+/* Positive rating tag */
+.voter-tag.voter-tag-pos {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+.voter-tag.voter-tag-pos .voter-tag-name {
+  color: #a7f3d0;
+}
+
+/* Negative rating tag */
+.voter-tag.voter-tag-neg {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+.voter-tag.voter-tag-neg .voter-tag-name {
+  color: #fca5a5;
+}
+
+/* Neutral zero tag */
+.voter-tag.voter-tag-zero {
+  background: rgba(100, 116, 139, 0.15);
+  border-color: rgba(100, 116, 139, 0.35);
+  color: #cbd5e1;
+}
+.voter-tag.voter-tag-zero .voter-tag-name {
+  color: #94a3b8;
+}
+
 /* Footer */
 .app-footer {
   text-align: center;
