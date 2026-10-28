@@ -50,14 +50,37 @@ The server will start listening at `http://localhost:8000`.
 
 ## 🌐 Playing Online with Friends
 
-Since GitHub Pages serves content over `https://`, browsers restrict requests to unencrypted local `http://` endpoints (Mixed Content). To expose your local Python server to your friends over the internet securely:
+### Option 1 — Porthole (Steam, Recommended)
 
-**Option 1 — Cloudflare Tunnel (Recommended, free, no account needed):**
+**The recommended way to play with friends is using [Porthole on Steam](https://store.steampowered.com/).**
+
+> [!TIP]
+> **Recommendation: Use LAN mode in Porthole**  
+> It is strongly recommended to use **LAN mode** in Porthole.  
+> To enable it:
+> 1. Leave the lobby.
+> 2. Open **Add-ons Settings**.
+> 3. Turn on **LAN**.
+
+#### Important Connection & Browser Settings
+
+1. **Browser Permission:**  
+   During connection, your browser will display a pop-up prompt at the top asking for access permissions. **You must allow/grant this permission** for the web client to communicate with the local server.
+
+2. **Full Server Address Format:**  
+   Changing the address is needed specifically for **Porthole in LAN mode**. Make sure to enter the address **fully without removing `http://` or the port**:  
+   - **Default:** `http://localhost:8000`  
+   - **Replacement example:** replace `localhost` with the host's LAN IP address in Porthole, e.g.:  
+     `http://192.168.1.100:8000` or `http://10.0.0.5:8000`
+
+---
+
+### Option 2 — Cloudflare Tunnel (Free & Easy)
 ```bash
 cloudflared tunnel --url http://localhost:8000
 ```
 
-**Option 2 — Ngrok:**
+### Option 3 — Ngrok
 ```bash
 ngrok http 8000
 ```
