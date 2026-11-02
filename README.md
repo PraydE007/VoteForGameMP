@@ -4,6 +4,20 @@
 
 **[🇬🇧 English version / Read in English](./README.en.md)**
 
+<p align="center">
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у гривнях (UAH)">
+    <img src="./icons/UAH.png" alt="Donate UAH" width="48" height="48" />
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у доларах (USD)">
+    <img src="./icons/DOLLAR.png" alt="Donate USD" width="48" height="48" />
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у євро (EUR)">
+    <img src="./icons/EURO.png" alt="Donate EUR" width="48" height="48" />
+  </a>
+</p>
+
 Вебсервіс для компанії, що допомагає швидко та справедливо обрати спільну гру. Клієнтська частина повністю статична й працює на **GitHub Pages**, а бекенд на **Python (FastAPI)** керує сесіями та в реальному часі підраховує результати голосування.
 
 ---
@@ -160,6 +174,21 @@ GitHub Pages працює через HTTPS. Якщо сайт відкритий
 4. **Vote:** хост запускає голосування. Кожен учасник оцінює кожну гру за шкалою від -2 до +2 балів та підтверджує свій вибір.
 5. **Results:** щойно всі учасники проголосують, система виведе переможця або всіх переможців у разі нічиєї, а також детальну таблицю балів.
 6. **Play:** після голосування підключіться до обраної гри. Якщо вона підтримує локальну або приватну мережеву гру, використовуйте Porthole та інструкції для підключення конкретної гри.
+
+---
+
+## 💖 Підтримати проєкт (Донат)
+
+Якщо вам подобається **VoteForMP** і ви бажаєте підтримати розвиток проєкту чи пригостити розробника кавою, ви можете зробити донат у зручній валюті:
+
+| Валюта | Кнопка | Спосіб оплати / Посилання |
+| :---: | :---: | :--- |
+| **UAH (Гривня)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="48" height="48" /></a> | [👉 Банка Monobank (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **USD (Долар)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="48" height="48" /></a> | [👉 Підтримати в USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **EUR (Євро)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="48" height="48" /></a> | [👉 Підтримати в EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+
+> ℹ️ **Примітка:** наразі для всіх кнопок діє універсальна банка Monobank: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
+> 🤖 **Для ШІ та розробників:** інструкція щодо додавання та зміни способів донату знаходиться у файлі [`DONATION_GUIDE.md`](./DONATION_GUIDE.md).
 
 ---
 

@@ -4,6 +4,20 @@
 
 **[🇺🇦 Українська версія доступна тут](./README.md)**
 
+<p align="center">
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in UAH">
+    <img src="./icons/UAH.png" alt="Donate UAH" width="48" height="48" />
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in USD">
+    <img src="./icons/DOLLAR.png" alt="Donate USD" width="48" height="48" />
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in EUR">
+    <img src="./icons/EURO.png" alt="Donate EUR" width="48" height="48" />
+  </a>
+</p>
+
 A simple, fast, and real-time multiplayer polling web application designed to help groups of friends agree on what game to play next. The client is completely static and ready for **GitHub Pages**, backed by a lightweight **Python (FastAPI)** server that manages rooms, synchronizes participants, and automatically calculates results.
 
 ---
@@ -96,6 +110,21 @@ Copy the generated `https://...` address (e.g. `https://random-words.trycloudfla
 3. **Add games:** Everyone in the lobby can submit game titles.
 4. **Vote:** The host starts the vote. Each player rates each game on a -2 to +2 scale and clicks *Submit Votes*.
 5. **Results:** When the last participant votes, the results podium automatically displays the highest-rated game (or multiple winners in case of a tie), alongside a complete ranked leaderboard.
+
+---
+
+## 💖 Support the Project (Donate)
+
+If you find **VoteForMP** useful and want to support its maintenance and new features, you can leave a tip in your preferred currency:
+
+| Currency | Button | Payment Method / Link |
+| :---: | :---: | :--- |
+| **UAH (Hryvnia)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="48" height="48" /></a> | [👉 Monobank Jar (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **USD (US Dollar)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="48" height="48" /></a> | [👉 Support in USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **EUR (Euro)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="48" height="48" /></a> | [👉 Support in EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+
+> ℹ️ **Note:** Currently, all currency buttons link to the unified Monobank jar: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
+> 🤖 **For AI & Contributors:** Detailed guide on how to add/update donation options can be found in [`DONATION_GUIDE.md`](./DONATION_GUIDE.md).
 
 ---
 
