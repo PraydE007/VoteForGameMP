@@ -5,16 +5,17 @@
 **[🇬🇧 English version / Read in English](./README.en.md)**
 
 <p align="center">
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у гривнях (UAH)">
-    <img src="./icons/UAH.png" alt="Donate UAH" width="128" height="128" />
+  <b>💖 Підтримати проєкт / Support the project:</b><br><br>
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/UAH.png" alt="UAH" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>UAH (Гривня)</b>
   </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у доларах (USD)">
-    <img src="./icons/DOLLAR.png" alt="Donate USD" width="128" height="128" />
+  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/DOLLAR.png" alt="USD" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>USD (Долар)</b>
   </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у євро (EUR)">
-    <img src="./icons/EURO.png" alt="Donate EUR" width="128" height="128" />
+  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/EURO.png" alt="EUR" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>EUR (Євро)</b>
   </a>
 </p>
 
@@ -182,13 +183,13 @@ GitHub Pages працює через HTTPS. Якщо сайт відкритий
 Якщо вам подобається **VoteForMP** і ви бажаєте підтримати розвиток проєкту чи пригостити розробника кавою, ви можете зробити донат у зручній валюті:
 
 | Валюта | Кнопка | Спосіб оплати / Посилання |
-| :---: | :---: | :--- |
-| **UAH (Гривня)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="48" height="48" /></a> | [👉 Банка Monobank (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **USD (Долар)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="48" height="48" /></a> | [👉 Підтримати в USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **EUR (Євро)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="48" height="48" /></a> | [👉 Підтримати в EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| :--- | :---: | :--- |
+| **UAH (Гривня)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в UAH</b></a> | [👉 Банка Monobank (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **USD (Долар)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в USD</b></a> | [👉 Підтримати в USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **EUR (Євро)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в EUR</b></a> | [👉 Підтримати в EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
 
 > ℹ️ **Примітка:** наразі для всіх кнопок діє універсальна банка Monobank: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
-> 🤖 **Для ШІ та розробників:** інструкція щодо додавання та зміни способів донату знаходиться у файлі [`DONATION_GUIDE.md`](./DONATION_GUIDE.md).
+> 🤖 **Для ШІ та розробників:** інструкція щодо додавання та зміни способів донату знаходиться у файлі [`DONATION_INSTRUCTION.md`](./DONATION_INSTRUCTION.md).
 
 ---
 

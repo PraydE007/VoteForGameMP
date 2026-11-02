@@ -5,16 +5,17 @@
 **[🇺🇦 Українська версія доступна тут](./README.md)**
 
 <p align="center">
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in UAH">
-    <img src="./icons/UAH.png" alt="Donate UAH" width="48" height="48" />
+  <b>💖 Support the project:</b><br><br>
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/UAH.png" alt="UAH" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>UAH (Hryvnia)</b>
   </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in USD">
-    <img src="./icons/DOLLAR.png" alt="Donate USD" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/DOLLAR.png" alt="USD" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>USD (US Dollar)</b>
   </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Donate in EUR">
-    <img src="./icons/EURO.png" alt="Donate EUR" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
+    <img src="./icons/EURO.png" alt="EUR" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>EUR (Euro)</b>
   </a>
 </p>
 
@@ -118,13 +119,13 @@ Copy the generated `https://...` address (e.g. `https://random-words.trycloudfla
 If you find **VoteForMP** useful and want to support its maintenance and new features, you can leave a tip in your preferred currency:
 
 | Currency | Button | Payment Method / Link |
-| :---: | :---: | :--- |
-| **UAH (Hryvnia)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="48" height="48" /></a> | [👉 Monobank Jar (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **USD (US Dollar)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="48" height="48" /></a> | [👉 Support in USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **EUR (Euro)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="48" height="48" /></a> | [👉 Support in EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| :--- | :---: | :--- |
+| **UAH (Hryvnia)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate UAH</b></a> | [👉 Monobank Jar (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **USD (US Dollar)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate USD</b></a> | [👉 Support in USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
+| **EUR (Euro)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate EUR</b></a> | [👉 Support in EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
 
 > ℹ️ **Note:** Currently, all currency buttons link to the unified Monobank jar: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
-> 🤖 **For AI & Contributors:** Detailed guide on how to add/update donation options can be found in [`DONATION_GUIDE.md`](./DONATION_GUIDE.md).
+> 🤖 **For AI & Contributors:** Detailed guide on how to add/update donation options can be found in [`DONATION_INSTRUCTION.md`](./DONATION_INSTRUCTION.md).
 
 ---
 

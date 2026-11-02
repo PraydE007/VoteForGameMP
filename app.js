@@ -124,6 +124,9 @@
       btn_exit_menu: '🚪 Вийти в головне меню',
       toast_invite_copied: 'Посилання на кімнату скопійовано в буфер обміну!',
       prompt_copy_link: 'Скопіюйте це посилання:',
+      footer_donate_label: '💖 Підтримати проєкт:',
+      results_donate_title: 'Сподобався сервіс для вибору гри?',
+      results_donate_desc: 'Підтримайте розвиток VoteForMP донатом на каву!',
       footer_text: 'VoteForMP &bull; Швидкий вибір спільних ігор &bull; Python Backend & GitHub Pages',
       ratings: {
         '-2': { icon: '🛑', label: 'Не хочу (-2)' },
@@ -249,6 +252,9 @@
       btn_exit_menu: '🚪 Exit to Main Menu',
       toast_invite_copied: 'Invite link copied to clipboard!',
       prompt_copy_link: 'Copy this link:',
+      footer_donate_label: '💖 Support the project:',
+      results_donate_title: 'Enjoying VoteForMP?',
+      results_donate_desc: 'Support the developer and future features with a coffee!',
       footer_text: 'VoteForMP &bull; Easy game polling for groups &bull; Python Backend & GitHub Pages',
       ratings: {
         '-2': { icon: '🛑', label: 'Don\'t want (-2)' },
