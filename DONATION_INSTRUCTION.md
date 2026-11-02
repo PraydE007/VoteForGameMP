@@ -105,3 +105,4 @@ icons/
 5. **Закомітити та запушити зміни:**
    - Виконати `git add .`, `git commit` та `git push origin main`.
    - Перевірити статус публікації GitHub Pages.
+
