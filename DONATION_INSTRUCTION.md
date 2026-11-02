@@ -45,23 +45,22 @@ icons/
   <p align="center">
     <b>💖 Підтримати проєкт / Support the project:</b><br><br>
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/UAH.png" alt="UAH" width="28" height="28" style="vertical-align: middle; margin-right: 6px;" /><b>UAH (Гривня)</b>
+      <img src="./icons/UAH.png" alt="UAH" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>UAH (Гривня)</b>
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/DOLLAR.png" alt="USD" width="28" height="28" style="vertical-align: middle; margin-right: 6px;" /><b>USD (Долар)</b>
+      <img src="./icons/DOLLAR.png" alt="USD" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>USD (Долар)</b>
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/EURO.png" alt="EUR" width="28" height="28" style="vertical-align: middle; margin-right: 6px;" /><b>EUR (Євро)</b>
+      <img src="./icons/EURO.png" alt="EUR" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>EUR (Євро)</b>
     </a>
   </p>
   ```
-- **Таблиця у розділі `## 💖 Підтримати проєкт (Донат)`:** з текстовими посиланнями та іконками.
 
 ### 2. Англійський `README.en.md` (English)
 - Аналогічний верхній банер з англійським текстом (`UAH (Hryvnia)`, `USD (US Dollar)`, `EUR (Euro)`).
-- Розділ `## 💖 Support the Project (Donate)` з таблицею.
+*(Примітка: окремий нижній розділ з таблицею прибрано з README за рішенням користувача для компактності опису).*
 
 ### 3. Веб-інтерфейс (`index.html`, `style.css`, `app.js`)
 - Розміщені у підвалі сторінки (`<footer class="app-footer">`), щоб бути доступними на всіх екранах (Головна, Лобі, Голосування, Результати):

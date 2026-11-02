@@ -178,21 +178,6 @@ GitHub Pages працює через HTTPS. Якщо сайт відкритий
 
 ---
 
-## 💖 Підтримати проєкт (Донат)
-
-Якщо вам подобається **VoteForMP** і ви бажаєте підтримати розвиток проєкту чи пригостити розробника кавою, ви можете зробити донат у зручній валюті:
-
-| Валюта | Кнопка | Спосіб оплати / Посилання |
-| :--- | :---: | :--- |
-| **UAH (Гривня)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в UAH</b></a> | [👉 Банка Monobank (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **USD (Долар)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в USD</b></a> | [👉 Підтримати в USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **EUR (Євро)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Підтримати в EUR</b></a> | [👉 Підтримати в EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-
-> ℹ️ **Примітка:** наразі для всіх кнопок діє універсальна банка Monobank: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
-> 🤖 **Для ШІ та розробників:** інструкція щодо додавання та зміни способів донату знаходиться у файлі [`DONATION_INSTRUCTION.md`](./DONATION_INSTRUCTION.md).
-
----
-
 ## 🛠️ Стек технологій
 
 - **Backend:** Python 3, FastAPI, Uvicorn, Pydantic.

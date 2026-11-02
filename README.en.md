@@ -114,21 +114,6 @@ Copy the generated `https://...` address (e.g. `https://random-words.trycloudfla
 
 ---
 
-## 💖 Support the Project (Donate)
-
-If you find **VoteForMP** useful and want to support its maintenance and new features, you can leave a tip in your preferred currency:
-
-| Currency | Button | Payment Method / Link |
-| :--- | :---: | :--- |
-| **UAH (Hryvnia)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/UAH.png" alt="UAH" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate UAH</b></a> | [👉 Monobank Jar (UAH)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **USD (US Dollar)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/DOLLAR.png" alt="USD" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate USD</b></a> | [👉 Support in USD (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-| **EUR (Euro)** | <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer"><img src="./icons/EURO.png" alt="EUR" width="32" height="32" style="vertical-align: middle; margin-right: 6px;" /><b>Donate EUR</b></a> | [👉 Support in EUR (Monobank)](https://send.monobank.ua/jar/5uPPFW5FqV) |
-
-> ℹ️ **Note:** Currently, all currency buttons link to the unified Monobank jar: [`https://send.monobank.ua/jar/5uPPFW5FqV`](https://send.monobank.ua/jar/5uPPFW5FqV).  
-> 🤖 **For AI & Contributors:** Detailed guide on how to add/update donation options can be found in [`DONATION_INSTRUCTION.md`](./DONATION_INSTRUCTION.md).
-
----
-
 ## 🛠️ Tech Stack
 
 - **Backend:** Python 3, FastAPI, Uvicorn, Pydantic.
