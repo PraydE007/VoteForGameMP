@@ -6,15 +6,15 @@
 
 <p align="center">
   <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у гривнях (UAH)">
-    <img src="./icons/UAH.png" alt="Donate UAH" width="48" height="48" />
+    <img src="./icons/UAH.png" alt="Donate UAH" width="64" height="64" />
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у доларах (USD)">
-    <img src="./icons/DOLLAR.png" alt="Donate USD" width="48" height="48" />
+    <img src="./icons/DOLLAR.png" alt="Donate USD" width="64" height="64" />
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" title="Донат у євро (EUR)">
-    <img src="./icons/EURO.png" alt="Donate EUR" width="48" height="48" />
+    <img src="./icons/EURO.png" alt="Donate EUR" width="64" height="64" />
   </a>
 </p>
 
