@@ -27,51 +27,56 @@ icons/
 - ⚠️ **КРИТИЧНО:** Наразі доступна **лише ця банка Monobank**.  
   **УСІ кнопки (UAH, USD, EUR або будь-які нові)** мають вести **виключно на це посилання**, доки користувач явно не надасть інші реквізити (наприклад, окремий PayPal, Stripe, криптогаманець тощо).
 
-### 🏷️ 1.3. Вимога до оформлення кнопок: ІКОНКА + ТЕКСТ
-Кнопки донату не повинні бути просто «голими» картинками. Вони **завжди повинні містити зрозумілий текст** разом із іконкою:
-- Для гривні: іконка `UAH.png` + текст **UAH (Гривня)** або **UAH ₴**
-- Для долара: іконка `DOLLAR.png` + текст **USD (Долар)** або **USD $**
-- Для євро: іконка `EURO.png` + текст **EUR (Євро)** або **EUR €**
+### 🏷️ 1.3. Вимога до оформлення кнопок: ЧИСТІ ЗОБРАЖЕННЯ (БЕЗ ТЕКСТУ ВАЛЮТ)
+За рішенням автора проєкту кнопки донату оформлюються **виключно як чисті зображення-іконки без підписів валют**:
+- Жодних підписів «UAH», «USD», «EUR» біля чи всередині кнопок!
+- Іконки мають бути **великими та добре помітними**:
+  - У `README.md` та `README.en.md`: розмір `width="128" height="128"`
+  - На веб-сторінці: розмір `72x72 px` (на мобільних `56x56 px`).
 
 ---
 
 ## 📍 2. Де розміщені кнопки донату в проєкті
 
-Кнопки донату наявні у трьох ключових місцях:
+Кнопки донату наявні у двох ключових місцях:
 
-### 1. Головний `README.md` (Українська)
-- **Верхній блок (Banner):** одразу під посиланням на англійську версію:
+### 1. Головний `README.md` (Українська) та `README.en.md` (English)
+- **Верхній блок (Banner):** одразу під посиланням на іншу мовну версію:
   ```html
   <p align="center">
     <b>💖 Підтримати проєкт / Support the project:</b><br><br>
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/UAH.png" alt="UAH" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>UAH (Гривня)</b>
+      <img src="./icons/UAH.png" alt="UAH" width="128" height="128" style="vertical-align: middle; margin-right: 6px;" />
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/DOLLAR.png" alt="USD" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>USD (Долар)</b>
+      <img src="./icons/DOLLAR.png" alt="USD" width="128" height="128" style="vertical-align: middle; margin-right: 6px;" />
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer">
-      <img src="./icons/EURO.png" alt="EUR" width="36" height="36" style="vertical-align: middle; margin-right: 6px;" /><b>EUR (Євро)</b>
+      <img src="./icons/EURO.png" alt="EUR" width="128" height="128" style="vertical-align: middle; margin-right: 6px;" />
     </a>
   </p>
   ```
 
-### 2. Англійський `README.en.md` (English)
-- Аналогічний верхній банер з англійським текстом (`UAH (Hryvnia)`, `USD (US Dollar)`, `EUR (Euro)`).
-*(Примітка: окремий нижній розділ з таблицею прибрано з README за рішенням користувача для компактності опису).*
-
-### 3. Веб-інтерфейс (`index.html`, `style.css`, `app.js`)
-- Розміщені у підвалі сторінки (`<footer class="app-footer">`), щоб бути доступними на всіх екранах (Головна, Лобі, Голосування, Результати):
+### 2. Веб-інтерфейс (`index.html`, `style.css`, `app.js`)
+- Розміщені у підвалі сторінки (`<footer class="app-footer">`), а також на екрані результатів голосування (`.results-donation-banner`):
   ```html
   <div class="footer-donations">
     <span class="donation-label" data-i18n="footer_donate_label">💖 Підтримати проєкт:</span>
     <div class="donation-buttons">
       <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" class="donation-btn" title="UAH (Гривня)">
         <img src="icons/UAH.png" alt="UAH" class="donation-icon">
-        <span>UAH ₴</span>
       </a>
+      <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" class="donation-btn" title="USD (Долар)">
+        <img src="icons/DOLLAR.png" alt="USD" class="donation-icon">
+      </a>
+      <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" class="donation-btn" title="EUR (Євро)">
+        <img src="icons/EURO.png" alt="EUR" class="donation-icon">
+      </a>
+    </div>
+  </div>
+  ```
       <a href="https://send.monobank.ua/jar/5uPPFW5FqV" target="_blank" rel="noopener noreferrer" class="donation-btn" title="USD (Долар)">
         <img src="icons/DOLLAR.png" alt="USD" class="donation-icon">
         <span>USD $</span>
